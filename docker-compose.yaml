@@ -1,0 +1,15 @@
+version: "3.9"
+   
+services:
+  kafka_consumer_1:
+    image: go-kafka-consumer
+    restart: always
+    environment: 
+      KAFKA_HOST: 192.168.0.105:9092
+      KAFKA_TOPIC: message
+  kafka_consumer_2:
+    image: go-kafka-consumer
+    restart: always
+    environment: 
+      KAFKA_HOST: 192.168.0.105:9092
+      KAFKA_TOPIC: message
