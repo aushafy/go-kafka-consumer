@@ -2,14 +2,16 @@ version: "3.9"
    
 services:
   kafka_consumer_1:
-    image: go-kafka-consumer
+    image: go-kafka-consumer:latest
     restart: always
     environment: 
       KAFKA_HOST: 192.168.0.105:9092
       KAFKA_TOPIC: message
-  kafka_consumer_2:
-    image: go-kafka-consumer
+      CONSUMER_GROUP_ID: my-group
+  kafka_consumer_test_group:
+    image: go-kafka-consumer:latest
     restart: always
     environment: 
       KAFKA_HOST: 192.168.0.105:9092
       KAFKA_TOPIC: message
+      CONSUMER_GROUP_ID: my-group

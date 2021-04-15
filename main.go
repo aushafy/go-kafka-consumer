@@ -9,8 +9,9 @@ import (
 )
 
 var (
-	topic       = os.Getenv("KAFKA_TOPIC")
-	kafkaBroker = os.Getenv("KAFKA_HOST")
+	topic           = os.Getenv("KAFKA_TOPIC")
+	kafkaBroker     = os.Getenv("KAFKA_HOST")
+	consumerGroupId = os.Getenv("CONSUMER_GROUP_ID")
 )
 
 func main() {
@@ -24,7 +25,7 @@ func consume(ctx context.Context) {
 	r := kafka.NewReader(kafka.ReaderConfig{
 		Brokers: []string{kafkaBroker},
 		Topic:   topic,
-		GroupID: "my-group",
+		GroupID: consumerGroupId,
 	})
 	for {
 		// the `ReadMessage` method blocks until we receive the next event
